@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menuJadwalSenin"
+        android:title="Jadwal Hari Senin" />
+    <item
+        android:id="@+id/menuJadwalSelasa"
+        android:title="Jadwal Hari Selasa" />
+    <item
+        android:id="@+id/menuJadwalRabu"
+        android:title="Jadwal Hari Rabu" />
+    <item
+        android:id="@+id/menuJadwalKamis"
+        android:title="Jadwal Hari Kamis" />
+    <item
+        android:id="@+id/menuJadwalJumat"
+        android:title="Jadwal Hari Jumat" />
+    <item
+        android:id="@+id/menuJadwalSabtu"
+        android:title="Jadwal Hari Sabtu" />
+</menu>
