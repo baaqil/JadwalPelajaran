@@ -16,7 +16,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".TambahJadwal" />
-        <activity android:name=".EditJadwal"></activity>
+        <activity android:name=".EditJadwal" />
+        <activity android:name=".HeaderSetting"></activity>
     </application>
 
 </manifest>
