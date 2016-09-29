@@ -2,20 +2,26 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/menuJadwalSenin"
-        android:title="Jadwal Hari Senin" />
+        android:title="Jadwal Hari Senin"
+        android:icon="@drawable/ic_jadwal"/>
     <item
         android:id="@+id/menuJadwalSelasa"
-        android:title="Jadwal Hari Selasa" />
+        android:title="Jadwal Hari Selasa"
+        android:icon="@drawable/ic_jadwal"/>
     <item
         android:id="@+id/menuJadwalRabu"
-        android:title="Jadwal Hari Rabu" />
+        android:title="Jadwal Hari Rabu"
+        android:icon="@drawable/ic_jadwal"/>
     <item
         android:id="@+id/menuJadwalKamis"
-        android:title="Jadwal Hari Kamis" />
+        android:title="Jadwal Hari Kamis"
+        android:icon="@drawable/ic_jadwal"/>
     <item
         android:id="@+id/menuJadwalJumat"
-        android:title="Jadwal Hari Jumat" />
+        android:title="Jadwal Hari Jumat"
+        android:icon="@drawable/ic_jadwal"/>
     <item
         android:id="@+id/menuJadwalSabtu"
-        android:title="Jadwal Hari Sabtu" />
+        android:title="Jadwal Hari Sabtu"
+        android:icon="@drawable/ic_jadwal"/>
 </menu>

@@ -33,7 +33,6 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         android:scrollbars="none"
-        app:headerLayout="@layout/header_drawer_layout"
         app:menu="@menu/daftar_jadwal_harian" />
 </android.support.v4.widget.DrawerLayout>
 

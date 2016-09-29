@@ -15,7 +15,9 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.JonesRandom.JadwalPelajaran.JadwalFragment.Jumat;
 import com.JonesRandom.JadwalPelajaran.JadwalFragment.Kamis;
@@ -31,6 +33,12 @@ public class MainActivity extends AppCompatActivity {
     NavigationView navigationView;
     DBHandler handler;
     SharedPreferences preferences;
+    View headerItem;
+
+    ///NavigationItem
+
+    ImageButton headerSetting;
+    TextView txtNamaSiswa, txtKelas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.d_open, R.string.d_close);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
+
         actionBarDrawerToggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -63,6 +72,23 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        /// Navigation Item
+
+        headerItem = navigationView.inflateHeaderView(R.layout.header_drawer_layout);
+
+        txtNamaSiswa = (TextView) headerItem.findViewById(R.id.txtNamaSiswa);
+        txtKelas = (TextView) headerItem.findViewById(R.id.txtKelas);
+
+        headerSetting = (ImageButton) headerItem.findViewById(R.id.headerSetting);
+        headerSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, HeaderSetting.class));
+            }
+        });
+
+        loadHeaderItem();
 
     }
 
@@ -131,16 +157,22 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void loadHeaderItem() {
+        SharedPreferences preferences = getSharedPreferences("profil", MODE_PRIVATE);
+        txtNamaSiswa.setText(preferences.getString("NAMA_SISWA", "Nama Siswa"));
+        txtKelas.setText(preferences.getString("KELAS", "Kelas"));
+    }
+
     @TargetApi(Build.VERSION_CODES.KITKAT)
     @Override
     protected void onResume() {
         super.onResume();
-        int nomor_Halaman = preferences.getInt("nomor_halaman",1);
+        int nomor_Halaman = preferences.getInt("nomor_halaman", 1);
 
         Fragment fragment = null;
         Class fragmentJadwal = null;
 
-        switch (nomor_Halaman){
+        switch (nomor_Halaman) {
             case 1:
                 fragmentJadwal = Senin.class;
                 toolbar.setTitle("Jadwal Hari Senin");
@@ -177,5 +209,6 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.container_jadwal, fragment).commit();
+        loadHeaderItem();
     }
 }
