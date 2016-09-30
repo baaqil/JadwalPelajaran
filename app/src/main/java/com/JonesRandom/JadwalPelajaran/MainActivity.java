@@ -3,7 +3,10 @@ package com.JonesRandom.JadwalPelajaran;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
+import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -17,6 +20,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.JonesRandom.JadwalPelajaran.JadwalFragment.Jumat;
@@ -39,6 +43,10 @@ public class MainActivity extends AppCompatActivity {
 
     ImageButton headerSetting;
     TextView txtNamaSiswa, txtKelas;
+    ImageView pic;
+
+    Bitmap prosesBitmap;
+    Bitmap hasilBitmap = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +87,8 @@ public class MainActivity extends AppCompatActivity {
 
         txtNamaSiswa = (TextView) headerItem.findViewById(R.id.txtNamaSiswa);
         txtKelas = (TextView) headerItem.findViewById(R.id.txtKelas);
+
+        pic = (ImageView)headerItem.findViewById(R.id.pic);
 
         headerSetting = (ImageButton) headerItem.findViewById(R.id.headerSetting);
         headerSetting.setOnClickListener(new View.OnClickListener() {
@@ -161,6 +171,22 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences preferences = getSharedPreferences("profil", MODE_PRIVATE);
         txtNamaSiswa.setText(preferences.getString("NAMA_SISWA", "Nama Siswa"));
         txtKelas.setText(preferences.getString("KELAS", "Kelas"));
+        try {
+            String Lokasi = Environment.getExternalStorageDirectory() + "/Android/data/com.JonesRandom.JadwalPelajaran/file/pic/ProfilPic.png";
+            prosesBitmap = BitmapFactory.decodeFile(Lokasi);
+            if (prosesBitmap.getWidth() >= prosesBitmap.getHeight()) {
+                hasilBitmap = Bitmap.createBitmap(prosesBitmap, prosesBitmap.getWidth() / 2 - prosesBitmap.getHeight() / 2, 0, prosesBitmap.getHeight(), prosesBitmap.getHeight());
+            } else {
+                hasilBitmap = Bitmap.createBitmap(prosesBitmap, 0, prosesBitmap.getHeight() / 2 - prosesBitmap.getWidth() / 2, prosesBitmap.getWidth(), prosesBitmap.getWidth());
+            }
+
+            PicBulat picBulat = new PicBulat(hasilBitmap);
+            pic.setImageDrawable(picBulat);
+        } catch (Exception e) {
+            hasilBitmap = BitmapFactory.decodeResource(getResources(),R.mipmap.ic_launcher);
+            PicBulat picBulat = new PicBulat(hasilBitmap);
+            pic.setImageDrawable(picBulat);
+        }
     }
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
