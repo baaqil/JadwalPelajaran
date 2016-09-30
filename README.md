@@ -2,6 +2,9 @@
 
 Demo bisa di download [di sini](https://raw.githubusercontent.com/JonesRandom/JadwalPelajaran/master/Demo/Jadwal-Pelajaran.apk)
 
+1 . [di sini](https://raw.githubusercontent.com/JonesRandom/JadwalPelajaran/master/Demo/Jadwal-Pelajaran.apk)
+
+2 . Update [di sini](https://raw.githubusercontent.com/JonesRandom/JadwalPelajaran/master/Demo/Jadwal-Pelajaran 2.apk)
 # Screenshoot
 
 [![Jones Random](https://github.com/JonesRandom/JadwalPelajaran/raw/master/Screenshoot/1.png)](https://github.com/JonesRandom/JadwalPelajaran/raw/master/Screenshoot/1.png)
